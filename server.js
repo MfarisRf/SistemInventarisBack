@@ -16,7 +16,7 @@ import KatalogRoute from './routes/KatalogRoute.js';
 const app = express();
 app.use(express.json());
 app.use(cors({
-    origin: ['https://satorirattan.vercel.app/'],
+    origin: ['https://satorirattan.vercel.app'],
     methods: ['POST', 'GET', 'DELETE', 'PUT'],
     credentials: true
 }));
