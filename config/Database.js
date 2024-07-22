@@ -5,6 +5,14 @@ const db = mysql.createConnection({
     user: "if0_36953085",
     password: "iQ1VB6pAYUmqi",
     database: "if0_36953085_db_inventory"
-})
+});
+
+db.connect((err) => {
+    if (err) {
+        console.error('Error connecting to the database:', err);
+        return;
+    }
+    console.log('Connected to the database.');
+});
 
 export default db;
