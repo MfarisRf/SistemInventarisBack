@@ -1,11 +1,17 @@
 import mysql from 'mysql';
 
-const db = mysql.createConnection({
-    host: "sql110.infinityfree.com",
-    user: "if0_36953085",
-    password: "mfaris2002",
-    database: "if0_36953085_db_inventory"
+const connection = mysql.createConnection({
+  host: 'sql110.infinityfree.com',
+  user: 'satorira_faris2002',
+  password: 'password_anda',
+  database: 'nama_database_anda'
 });
 
-
-export default db;
+connection.connect((err) => {
+  if (err) {
+    console.error('Error connecting to the database:', err);
+    return;
+  } 
+  console.log('Connected to the database.');
+  connection.end();
+});
