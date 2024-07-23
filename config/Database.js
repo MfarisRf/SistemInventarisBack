@@ -7,12 +7,5 @@ const db = mysql.createConnection({
     database: "if0_36953085_db_inventory"
 });
 
-db.connect((err) => {
-    if (err) {
-        console.error('Error connecting to the database:', err);
-        process.exit(1); // Keluar dari aplikasi jika tidak dapat terhubung
-    }
-    console.log('Connected to the database.');
-});
 
 export default db;
