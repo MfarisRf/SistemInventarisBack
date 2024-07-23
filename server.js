@@ -17,7 +17,7 @@ const app = express();
 
 // Configure CORS to allow requests from your frontend domain
 app.use(cors({
-    origin: 'https://satorirattan.vercel.app', // Frontend domain
+    origin: "*", // Frontend domain
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
@@ -25,7 +25,6 @@ app.use(cors({
 
 app.use(express.json());
 app.use(cookieParser());
-
 // Static file serving
 app.use('/uploads', express.static('uploads'));
 
@@ -40,6 +39,15 @@ app.use(BarangKeluarRoute);
 app.use(LaporanRoute);
 app.use(KatalogRoute);
 
-app.listen(8081, () => {
-    console.log('Server running on port 8081');
+// Test Database Connection
+db.connect((err) => {
+    if (err) {
+        console.error('Error connecting to the database:', err);
+        process.exit(1); // Exit the process with failure
+    } else {
+        console.log('Connected to the database.');
+        app.listen(8081, () => {
+            console.log('Server running on port 8081');
+        });
+    }
 });
